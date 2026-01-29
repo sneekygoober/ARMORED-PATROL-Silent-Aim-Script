@@ -40,7 +40,7 @@ local getTarget = function(): BasePart
         if player == plr or player.Team == plr.Team then continue; end;
 
         local char = player.Character;
-        if not char then continue; end;
+        if not char or char:FindFirstChildOfClass("ForceField") then continue; end;
 
         local tPart: BasePart = char:FindFirstChild("Head") or char.PrimaryPart or char:FindFirstChild("HumanoidRootPart");
         if not tPart then continue; end;
