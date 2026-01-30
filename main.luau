@@ -22,6 +22,7 @@ end);
 local mouse = plr:GetMouse();
 
 local filter = loadstring(game:HttpGet("https://raw.githubusercontent.com/sneekygoober/sneeky-s-filtergc/refs/heads/main/main.luau"))();
+local consts = {"pcall", "FireServer", "print", "script", "Name", ":ToolSvcsSend; failed to send "};
 
 local getScripts = function(char: Model): (LocalScript?, LocalScript?)
     local rifle = "LocalScript[Name = \"LsTlRifle\"]";
@@ -75,8 +76,8 @@ local setup = function(char: Model)
 
     local rifle, rpg = getScripts(char);
 
-    if rifle then hook(filter(rifle, "pcall", "FireServer", "print", "script", "Name", ":ToolSvcsSend; failed to send ")); end;
-    if rpg then hook(filter(rpg, "pcall", "FireServer", "print", "script", "Name", ":ToolSvcsSend; failed to send ")); end;
+    if rifle then hook(filter(rifle, unpack(consts))); end;
+    if rpg then hook(filter(rpg, unpack(consts))); end;
 
     print("Set up!");
 end;
