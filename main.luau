@@ -37,7 +37,7 @@ local getScripts = function(char: Model): (LocalScript?, LocalScript?)
 end;
 
 local getTarget = function(): BasePart
-    local cPart, cDistance = nil, 100;
+    local cPart, cDistance = nil, 200;
 
     for _, player: Player in next, Players:GetChildren() do
         if player == plr or player.Team == plr.Team then continue; end;
