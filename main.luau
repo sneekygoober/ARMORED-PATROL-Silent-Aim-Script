@@ -9,7 +9,6 @@ if not (hookfunction and (filtergc or (getgc and debug.getconstants)) and requir
     return error(executor .. " is missing " .. (not hookfunction and "hookfunction " or "") .. (not (filtergc and (getgc and debug.getconstants)) and "filtergc getgc debug.getconstants " or "") .. (not require and "require" or ""));
 end;
 
-local RS: ReplicatedStorage = cloneref(game:GetService("ReplicatedStorage"));
 local Players: Players = cloneref(game:GetService("Players"));
 
 local plr = Players.LocalPlayer;
@@ -31,7 +30,7 @@ local getScripts = function(char: Model): (LocalScript?, LocalScript?)
 end;
 
 local getTarget = function(): BasePart
-    local cPart, cDistance = nil, 200;
+    local cPart, cDistance = nil, 250;
 
     for _, player: Player in next, Players:GetChildren() do
         if player == plr or player.Team == plr.Team then continue; end;
