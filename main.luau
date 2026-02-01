@@ -15,12 +15,6 @@ local Players = game:GetService("Players");
 local plr = cloneref(Players).LocalPlayer;
 local cam = workspace.CurrentCamera;
 
-local h = plr.Character and plr.Character:WaitForChild("Humanoid", 5);
-
-plr.CharacterAdded:Connect(function(char: Model)
-    h = char:WaitForChild("Humanoid", 5);
-end);
-
 local mouse = plr:GetMouse();
 
 local filter = loadstring(game:HttpGet("https://raw.githubusercontent.com/sneekygoober/sneeky-s-filtergc/refs/heads/main/main.luau"))();
