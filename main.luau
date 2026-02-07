@@ -4,9 +4,12 @@ local cloneref = cloneref or function(i: Instance) return i; end;
 local clonefunction = clonefunction or function(f: (...any) -> (...any)) return f; end;
 local newcclosure = newcclosure or clonefunction;
 local executor = (identifyexecutor and select(2, pcall(identifyexecutor))) and identifyexecutor() or "Your executor";
+local SG = loadstring(game:HttpGet("https://raw.githubusercontent.com/sneekygoober/sneeky-s-notifications/refs/heads/main/main.luau"))();
 
 if not (hookfunction and filtergc or (getgc and debug.getconstants)) then
-    return error(executor .. " is missing " .. (not hookfunction and "hookfunction " or "") .. (not (filtergc and (getgc and debug.getconstants)) and "filtergc getgc debug.getconstants" or ""));
+    local err = executor .. " is missing " .. (not hookfunction and "hookfunction " or "") .. (not (filtergc and (getgc and debug.getconstants)) and "filtergc getgc debug.getconstants" or "");
+    SG["error"](err);
+    return error(err);
 end;
 
 local Players: Players = cloneref(game:GetService("Players"));
@@ -80,3 +83,5 @@ end;
 plr.CharacterAdded:Connect(setup);
 
 setup(plr.Character or plr.CharacterAdded:Wait());
+
+SG["success"]("Silent aim successfully executed!\n\nIf you have any issues press F9 or type /console in chat and then send me a screenshot of the console.\n\nDO NOT EXECUTE MORE THAN ONCE IN A SERVER!");
