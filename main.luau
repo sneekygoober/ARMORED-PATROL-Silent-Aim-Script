@@ -35,7 +35,7 @@ end;
 local getTarget = function(): BasePart
     local cPart, cDistance = nil, 250;
 
-    for _, player: Player in next, Players:GetChildren() do
+    for _, player: Player in next, Players:GetPlayers() do
         if player == plr or player.Team == plr.Team then continue; end;
 
         local char = player.Character;
