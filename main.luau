@@ -13,11 +13,15 @@ if not (hookfunction and filtergc or (getgc and debug.getconstants)) then
 end;
 
 local Players: Players = cloneref(game:GetService("Players"));
+local UIS: UserInputService = cloneref(game:GetService("UserInputService"));
 
 local plr = Players.LocalPlayer;
 local cam = workspace.CurrentCamera;
 
-local mouse = plr:GetMouse();
+local mouse: Mouse?;
+if not UIS.TouchEnabled and UIS.MouseEnabled and UIS.KeyboardEnabled then
+    mouse = plr:GetMouse();
+end;
 
 local filter: (script: (LocalScript|ModuleScript)?, strict: boolean, ...any) -> ((...any) -> (...any)) = loadstring(game:HttpGet("https://raw.githubusercontent.com/sneekygoober/sneeky-s-filtergc/refs/heads/main/main.luau"))();
 local consts = {"pcall", "FireServer", "print", "script", "Name", ":ToolSvcsSend; failed to send "};
