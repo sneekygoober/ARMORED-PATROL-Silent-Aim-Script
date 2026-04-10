@@ -6,7 +6,7 @@ local newcclosure = newcclosure or clonefunction;
 local executor = (identifyexecutor and select(2, pcall(identifyexecutor))) and identifyexecutor() or "Your executor";
 local SG = loadstring(game:HttpGet("https://raw.githubusercontent.com/sneekygoober/sneeky-s-notifications/refs/heads/main/main.luau"))();
 
-if not (hookfunction and filtergc or (getgc and debug.getconstants)) then
+if not (hookfunction and (filtergc or (getgc and debug.getconstants))) then
     local err = executor .. " is missing " .. (not hookfunction and "hookfunction " or "") .. (not (filtergc and (getgc and debug.getconstants)) and "filtergc getgc debug.getconstants" or "");
     SG["error"](err);
     return error(err);
